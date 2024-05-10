@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import tensorflow as tf
 import pathlib
 
@@ -19,7 +18,7 @@ img_width = 180
 
 train_ds = tf.keras.utils.image_dataset_from_directory(
   data_dir,
-  validation_split=0.2, # set proportion of images to be used for validation
+  validation_split=0.2,  # set proportion of images to be used for validation
   subset="training",
   seed=123,
   image_size=(img_height, img_width),
@@ -27,7 +26,7 @@ train_ds = tf.keras.utils.image_dataset_from_directory(
 
 val_ds = tf.keras.utils.image_dataset_from_directory(
   data_dir,
-  validation_split=0.2, # set proportion of images to be used for validation
+  validation_split=0.2,  # set proportion of images to be used for validation
   subset="validation",
   seed=123,
   image_size=(img_height, img_width),
@@ -70,7 +69,7 @@ model.compile(optimizer='adam',
 
 model.summary()
 
-epochs=10
+epochs = 10
 history = model.fit(
   train_ds,
   validation_data=val_ds,
@@ -105,8 +104,8 @@ data_augmentation = keras.Sequential(
   [
     layers.RandomFlip("horizontal",
                       input_shape=(img_height,
-                                  img_width,
-                                  3)),
+                                   img_width,
+                                   3)),
     layers.RandomRotation(0.1),
     layers.RandomZoom(0.1),
   ]

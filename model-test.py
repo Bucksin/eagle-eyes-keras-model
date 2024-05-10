@@ -10,7 +10,7 @@ class_names = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
 print("Testing image file: ", IMAGE_FILE)
 print("Specified classes: ", class_names)
 
-#prepare image
+# Prepare image
 img_height = 180
 img_width = 180
 
