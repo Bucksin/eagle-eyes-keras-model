@@ -1,17 +1,14 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import tensorflow as tf
 import pathlib
 
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras.models import Sequential
+import tensorflow as tf
+import keras
+from keras import layers
 
-
-DATASET_PATH = 'model_training/dataset/flower_photo'
+DATASET_PATH = 'model_training/dataset/objects'
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')
 
-image_count = len(list(data_dir.glob('*/*.jpg')))
+image_count = len(list(data_dir.glob('*/*.png')))
 print(image_count)
 
 batch_size = 32
@@ -59,11 +56,12 @@ num_classes = len(class_names)
 
 #Defining the structure of the model (using Convolutional Neural Network)
 #Sequential means 'step-by-step' building
-model = Sequential([
-  layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),#rescales the image values from 0-255 to 0-1
-  layers.Conv2D(16, 3, padding='same', activation='relu'),#convolutional layers, basically filters to create feature maps that reps the features in the image
-  layers.MaxPooling2D(),#downsample the above so it's less to calculate
-  layers.Conv2D(32, 3, padding='same', activation='relu'),
+model = keras.Sequential([
+    layers.Rescaling(1. / 255, input_shape=(img_height, img_width, 3)),  # rescales the image values from 0-255 to 0-1
+    layers.Conv2D(16, 3, padding='same', activation='relu'),
+    # convolutional layers, basically filters to create feature maps that reps the features in the image
+    layers.MaxPooling2D(),  # downsample the above so it's less to calculate
+    layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
@@ -122,15 +120,15 @@ data_augmentation = keras.Sequential(
   [
     layers.RandomFlip("horizontal",
                       input_shape=(img_height,
-                                  img_width,
-                                  3)),
+                                   img_width,
+                                   3)),
     layers.RandomRotation(0.1),
     layers.RandomZoom(0.1),
   ]
 )
 
 # Dropout
-model = Sequential([
+model = keras.Sequential([
   data_augmentation,#the data augumentation layer is added
   layers.Rescaling(1./255),
   layers.Conv2D(16, 3, padding='same', activation='relu'),
@@ -181,7 +179,5 @@ plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
 plt.show()
 
-print('saving model')
 # Save the model
 model.save('exported_model/model.keras')
-print('saved model')

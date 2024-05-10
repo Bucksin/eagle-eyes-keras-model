@@ -5,14 +5,14 @@ import tensorflow as tf
 from tensorflow import keras
 
 
-IMAGE_FILE = 'test_images/daisy3.jpg'
+IMAGE_FILE = 'test_images/log_2.png'
 
-class_names = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
+class_names = ['logs', 'mossy_rocks']
 
 print("Testing image file: ", IMAGE_FILE)
 print("Specified classes: ", class_names)
 
-#prepare image
+# Prepare image
 img_height = 180
 img_width = 180
 
