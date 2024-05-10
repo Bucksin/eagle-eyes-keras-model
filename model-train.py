@@ -1,10 +1,9 @@
 import matplotlib.pyplot as plt
-import tensorflow as tf
 import pathlib
 
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras.models import Sequential
+import tensorflow as tf
+import keras
+from keras import layers
 
 DATASET_PATH = 'model_training/dataset/objects'
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')
@@ -50,7 +49,7 @@ first_image = image_batch[0]
 
 num_classes = len(class_names)
 
-model = Sequential([
+model = keras.Sequential([
   layers.Rescaling(1./255, input_shape=(img_height, img_width, 3)),
   layers.Conv2D(16, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
@@ -112,7 +111,7 @@ data_augmentation = keras.Sequential(
 )
 
 # Dropout
-model = Sequential([
+model = keras.Sequential([
   data_augmentation,
   layers.Rescaling(1./255),
   layers.Conv2D(16, 3, padding='same', activation='relu'),
