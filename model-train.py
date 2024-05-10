@@ -6,10 +6,10 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
-DATASET_PATH = 'model_training/dataset/flower_photo'
+DATASET_PATH = 'model_training/dataset/objects'
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')
 
-image_count = len(list(data_dir.glob('*/*.jpg')))
+image_count = len(list(data_dir.glob('*/*.png')))
 print(image_count)
 
 batch_size = 32
