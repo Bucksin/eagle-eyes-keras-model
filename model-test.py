@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 
-IMAGE_FILE = 'test_images/log_2.png'
+IMAGE_FILE = 'test_images/log1.png'
 
 class_names = ['logs', 'mossy_rocks']
 
