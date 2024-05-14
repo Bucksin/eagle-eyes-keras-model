@@ -5,7 +5,9 @@ import tensorflow as tf
 import keras
 from keras import layers
 
+ACTIVATION_FUNCTION = 'sigmoid' # set to either "sigmoid" or "softmax"
 DATASET_PATH = 'model_training/dataset/objects'
+
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')
 
 image_count = len(list(data_dir.glob('*/*.png')))
@@ -57,17 +59,18 @@ num_classes = len(class_names)
 #Defining the structure of the model (using Convolutional Neural Network)
 #Sequential means 'step-by-step' building
 model = keras.Sequential([
-    layers.Rescaling(1. / 255, input_shape=(img_height, img_width, 3)),  # rescales the image values from 0-255 to 0-1
-    layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.Rescaling(1. / 255, input_shape=(img_height, img_width, 3)),  # rescales the image values from 0-255 to 0-1
+  layers.Conv2D(16, 3, padding='same', activation='relu'),
     # convolutional layers, basically filters to create feature maps that reps the features in the image
-    layers.MaxPooling2D(),  # downsample the above so it's less to calculate
-    layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.MaxPooling2D(),  # downsample the above so it's less to calculate
+  layers.Conv2D(32, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Conv2D(64, 3, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Flatten(),#2D feature maps into 1D vector for the next layer
   layers.Dense(128, activation='relu'),#dense layer that uses 128 neurons and relu activation function
-  layers.Dense(num_classes)#same num of neurons as the classes
+  layers.Dense(num_classes),#same num of neurons as the classes
+  layers.Activation(ACTIVATION_FUNCTION)
 ])
 
 #The Dense layer is a type of layer in neural networks where each neuron is connected to all neurons in the previous layer
@@ -140,7 +143,8 @@ model = keras.Sequential([
   layers.Dropout(0.2),#dropout layer randomly sets a fraction of the input to 0 to prevent overfitting
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
-  layers.Dense(num_classes, name="outputs")
+  layers.Dense(num_classes, name="outputs"),
+  layers.Activation(ACTIVATION_FUNCTION)
 ])
 
 model.compile(optimizer='adam',
