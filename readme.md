@@ -29,7 +29,7 @@ All photos need to be separated into folders as classes. See the sample dataset 
 Before training, in model-train.py,
 To set sigmoid or softmax functions., change the variable ACTIVATION_FUNCTION to either "sigmoid" or "softmax"
 
-Set the data path to model_training/dataset/your_dataset
+Set the variable DATASET_PATH to model_training/dataset/your_dataset
 
 run the script python model-train.py
 
