@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import pathlib
+import os
+import numpy as np
 
 import tensorflow as tf
 import keras
@@ -184,4 +186,42 @@ plt.title('Training and Validation Loss')
 plt.show()
 
 # Save the model
-model.save('exported_model/model.keras')
+model_path = 'exported_model/model.keras'
+model.save(model_path)
+
+# Test saving of the model and loading it back
+def test_save_and_load_submission():
+    model = tf.keras.models.load_model(model_path)
+
+    # Load a single image for testing
+    test_image_path = next(data_dir.glob('*/*.png'))
+    img = tf.keras.utils.load_img(
+        test_image_path, target_size=(img_height, img_width)
+    )
+    img_array = tf.keras.utils.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
+
+    # Run detection with the original model
+    original_result = model.predict(img_array)
+    print("Original model predictions:", original_result)
+
+    # Save the model to a file
+    saved_model_path = os.path.expanduser("~/Downloads/test_model.keras")
+    model.save(saved_model_path)
+
+    # Load the model from the file
+    loaded_model = tf.keras.models.load_model(saved_model_path)
+
+    # Run detection with the loaded model
+    new_result = loaded_model.predict(img_array)
+    print("Loaded model predictions:", new_result)
+
+    # Verify that the number of detections is the same
+    assert len(original_result) == len(new_result), "Number of detections differ"
+
+    # Verify that the predictions are close
+    for orig, new in zip(original_result[0], new_result[0]):
+        assert np.isclose(orig, new), f"Prediction mismatch: {orig} vs {new}"
+
+# Run the test for saving and loading the model
+test_save_and_load_submission()
