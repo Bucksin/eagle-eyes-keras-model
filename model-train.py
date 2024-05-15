@@ -7,7 +7,7 @@ import tensorflow as tf
 import keras
 from keras import layers
 
-ACTIVATION_FUNCTION = 'sigmoid' # set to either "sigmoid" or "softmax"
+ACTIVATION_FUNCTION = 'softmax' # set to either "sigmoid" or "softmax"
 DATASET_PATH = 'model_training/dataset/objects'
 
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')

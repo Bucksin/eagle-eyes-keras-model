@@ -7,7 +7,7 @@ from class_names import class_names
 from PIL import Image
 import matplotlib.pyplot as plt
 
-IMAGE_FILE = 'test_images/bush4.png'
+IMAGE_FILE = 'test_images/mossy_rock1.png'
 
 print("Testing image file: ", IMAGE_FILE)
 print("Specified classes: ", class_names)
@@ -42,7 +42,7 @@ new_model = tf.keras.models.load_model('exported_model/model.keras')#load the tr
 # print(scores_percentages)
 # for i, predictions in enumerate(scores_percentages[0]):
 #     print(f"Score for class {class_names[i]}: {predictions}")
-predictions = new_model.predict(img_array)
+predictions = new_model.predict(img_array) * 100
 print("Image: ", IMAGE_FILE)
 print("Model predictions: ", predictions)
 for i, predictions in enumerate(predictions[0]):

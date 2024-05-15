@@ -1,5 +1,6 @@
 class_names = [
     'logs', 
     'mossy_rocks',
-    'bushes'
+    'bushes',
+    'tree_leaves'
     ]

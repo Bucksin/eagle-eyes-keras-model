@@ -9,7 +9,7 @@ import tensorflow as tf
 from tensorflow import keras
 from class_names import class_names
 
-IMAGE_DIRECTORY = 'test_multi_images'
+IMAGE_DIRECTORY = 'test_multi_images/tree_leaves'
 
 print("Testing image files in: ", IMAGE_DIRECTORY)
 print("Specified classes: ", class_names)
@@ -31,7 +31,7 @@ for filename in os.listdir(IMAGE_DIRECTORY):
 
     new_model = tf.keras.models.load_model('exported_model/model.keras')#load the trained model
     #returns the prediction as a list of arrays in probabilities for each category in the model
-    predictions = new_model.predict(img_array)
+    predictions = new_model.predict(img_array) * 100
     print("Image: ", filename)
     print("Model predictions: ", predictions)
 
