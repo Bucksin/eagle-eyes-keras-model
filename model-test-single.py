@@ -13,8 +13,8 @@ print("Testing image file: ", IMAGE_FILE)
 print("Specified classes: ", class_names)
 
 # Prepare image
-img_height = 180
-img_width = 180
+img_height = 80
+img_width = 80
 
 #loading the test image into a Python Imaging Library format
 img = tf.keras.utils.load_img(

@@ -9,14 +9,14 @@ import tensorflow as tf
 from tensorflow import keras
 from class_names import class_names
 
-IMAGE_DIRECTORY = 'test_multi_images/tree_leaves'
+IMAGE_DIRECTORY = 'test_multi_images'
 
 print("Testing image files in: ", IMAGE_DIRECTORY)
 print("Specified classes: ", class_names)
 
 # set image sizes
-img_height = 180
-img_width = 180
+img_height = 80
+img_width = 80
 
 images = []
 for filename in os.listdir(IMAGE_DIRECTORY):
