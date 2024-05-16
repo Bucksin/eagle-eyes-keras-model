@@ -16,8 +16,8 @@ image_count = len(list(data_dir.glob('*/*.png')))
 print(image_count)
 
 batch_size = 32
-img_height = 180
-img_width = 180
+img_height = 80
+img_width = 80
 
 #Yields batches of images and labels
 #loads 80% of the images for training
