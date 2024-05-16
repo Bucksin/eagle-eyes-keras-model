@@ -37,7 +37,8 @@ python model-train.py
 ````
 
 ### Testing the model
-Make sure all your classes are listed in class_names.py.
+Make sure all your classes are listed in class_names.py in alphabetical order.
+The class names need to be in the same order as the list of folders in your dataset which should automatically be alphabetical.
 
 To run the model on a single image in the test_images folder, run
 ````
