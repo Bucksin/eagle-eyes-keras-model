@@ -195,6 +195,7 @@ def test_save_and_load_submission():
 
     # Load a single image for testing
     test_image_path = next(data_dir.glob('*/*.png'))
+    print(test_image_path)
     img = tf.keras.utils.load_img(
         test_image_path, target_size=(img_height, img_width)
     )
