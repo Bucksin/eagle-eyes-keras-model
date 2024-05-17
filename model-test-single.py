@@ -7,7 +7,7 @@ from class_names import class_names
 from PIL import Image
 import matplotlib.pyplot as plt
 
-IMAGE_FILE = 'test_images/mossy_rock1.png'
+IMAGE_FILE = 'test_images/logs/log1.png'
 
 print("Testing image file: ", IMAGE_FILE)
 print("Specified classes: ", class_names)
