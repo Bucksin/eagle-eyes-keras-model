@@ -1,3 +1,4 @@
 .idea
 eagle_eyes_hackathon.egg-info
 class_names.cpython-312.pyc
+__pycache__
