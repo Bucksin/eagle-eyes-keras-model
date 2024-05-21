@@ -9,7 +9,7 @@ import tensorflow as tf
 from tensorflow import keras
 from class_names import class_names
 
-IMAGE_DIRECTORY = 'test_multi_images'
+IMAGE_DIRECTORY = 'test_multi_images/tree_trunks'
 
 print("Testing image files in: ", IMAGE_DIRECTORY)
 print("Specified classes: ", class_names)
