@@ -1,9 +1,16 @@
+#image classification
+# class_names = [
+#     'bushes',
+#     'logs',
+#     'mossy_rocks',
+#     'rocks',
+#     'tree_leaves',
+#     'tree_trunks',
+#     'true_positive'
+#     ]
+
+#false positive vs true positive
 class_names = [
-    'bushes',
-    'logs', 
-    'mossy_rocks',
-    'rocks',
-    'tree_leaves',
-    'tree_trunks',
+    'false_positive',
     'true_positive'
     ]
