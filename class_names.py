@@ -1,3 +1,5 @@
+# uncomment/comment the class you want/dont want
+
 #image classification
 # class_names = [
 #     'bushes',

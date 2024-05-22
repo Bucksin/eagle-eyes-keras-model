@@ -8,6 +8,9 @@ import keras
 from keras import layers
 
 ACTIVATION_FUNCTION = 'sigmoid' # set to either "sigmoid" or "softmax"
+
+#uncomment the dataset you want - 1. image classification 2. true vs false positive
+# DATASET_PATH = 'model_training/dataset/objects'
 DATASET_PATH = 'model_training/dataset/falseTruePositive'
 
 data_dir = pathlib.Path(DATASET_PATH).with_suffix('')
